@@ -17,8 +17,8 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Crayon Analytics',
-      theme: ThemeData.dark().copyWith(
-        scaffoldBackgroundColor: const Color.fromARGB(24, 87, 87, 15)
+      theme: ThemeData.light().copyWith(
+        scaffoldBackgroundColor: Colors.blue// const Color.fromARGB(24, 87, 87, 15)
       ),
       home: MultiProvider(
         providers: [
