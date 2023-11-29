@@ -94,7 +94,7 @@ class LeftSideMenu extends StatelessWidget {
             //   //color: Colors.red;
             // ),
             const Padding(
-              padding: const EdgeInsets.only(left:20.0),
+              padding: EdgeInsets.only(left:20.0),
               child: Text(
                 "Management",
                 style: TextStyle(

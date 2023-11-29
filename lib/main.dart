@@ -1,5 +1,5 @@
 import 'package:cranalytics/mywidgets/leftsidemenu.dart';
-import 'package:cranalytics/mywidgets/menuappcontroller.dart';
+import 'package:cranalytics/controllers/menuappcontroller.dart';
 import 'package:cranalytics/utils/responsiveutil.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -72,4 +72,3 @@ class MainScreen extends StatelessWidget {
     );
   }
 }
-

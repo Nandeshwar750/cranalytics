@@ -1,5 +1,5 @@
 import 'package:cranalytics/config/constants.dart';
-import 'package:cranalytics/mywidgets/menuappcontroller.dart';
+import 'package:cranalytics/controllers/menuappcontroller.dart';
 import 'package:cranalytics/utils/responsiveutil.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -27,7 +27,7 @@ class Header extends StatelessWidget {
         if (!ResponsiveUtil.isMobile(context))
           Spacer(flex: ResponsiveUtil.isDesktop(context) ? 2 : 1),
         const Expanded(child: SearchField()),
-        ProfileCard()
+        const ProfileCard()
       ],
     );
   }
@@ -92,9 +92,9 @@ class ProfileCard extends StatelessWidget {
           if (!ResponsiveUtil.isMobile(context))
             Padding(
               padding: EdgeInsets.symmetric(horizontal: defaultPadding / 2),
-              child: Text("Admin"),
+              child: const Text("Admin"),
             ),
-          Icon(Icons.keyboard_arrow_down),
+          const Icon(Icons.keyboard_arrow_down),
         ],
       ),
     );
@@ -113,9 +113,9 @@ class SearchField extends StatelessWidget {
         hintText: "Search",
         fillColor: secondaryColor,
         filled: true,
-        border: OutlineInputBorder(
+        border: const OutlineInputBorder(
           borderSide: BorderSide.none,
-          borderRadius: const BorderRadius.all(Radius.circular(10)),
+          borderRadius: BorderRadius.all(Radius.circular(10)),
         ),
         suffixIcon: InkWell(
           onTap: () {},
