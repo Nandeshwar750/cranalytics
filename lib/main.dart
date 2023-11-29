@@ -1,11 +1,36 @@
-import 'package:cranalytics/mywidgets/leftsidemenu.dart';
-import 'package:cranalytics/mywidgets/menuappcontroller.dart';
-import 'package:cranalytics/utils/responsiveutil.dart';
+import 'dart:ui';
+// import 'package:cranalytics/mywidgets/leftsidemenu.dart';
+import 'package:cranalytics/controllers/menu_controller.dart'
+    as menu_controller;
+import 'package:cranalytics/controllers/navigation_controller.dart';
+// import 'package:cranalytics/utils/responsiveutil.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
+// import 'package:provider/provider.dart';
+import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:cranalytics/routing/routes.dart';
+import 'package:cranalytics/pages/404/error_page.dart';
+import 'package:cranalytics/layout.dart';
+import 'package:cranalytics/pages/authentication/authentication.dart';
+import 'package:cranalytics/constants/style.dart';
+import 'package:cranalytics/env/env.dart';
+import 'package:firebase_core/firebase_core.dart';
 
-void main() {
-  runApp(MyApp());
+
+void main(List<String> args) async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: const FirebaseOptions(
+      apiKey: Env.apiKey,
+      appId: Env.appId,
+      messagingSenderId: Env.messagingSenderId,
+      projectId: Env.projectId,
+      authDomain: Env.authDomain,
+      storageBucket: Env.storageBucket
+  ));
+  Get.put(menu_controller.MenuController());
+  Get.put(NavigationController());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -14,62 +39,49 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return GetMaterialApp(
+      scrollBehavior: MyCustomScrollBehavior(),
+      initialRoute: authenticationPageRoute,
+      //currently, unknownRoute does not work as expected
+      //you need to NOT use '/' as your home route
+      //you can use for example '/home' or '/dashboard' or '/overview'
+      //as your home route. This is a bug with the GetX package
+      unknownRoute:
+          GetPage(name: '/not-found', page: () => const PageNotFound()),
+      defaultTransition: Transition.leftToRightWithFade,
+      getPages: [
+        GetPage(name: rootRoute, page: () => SiteLayout()),
+        GetPage(
+            name: authenticationPageRoute,
+            page: () => const AuthenticationPage()),
+      ],
       debugShowCheckedModeBanner: false,
-      title: 'Crayon Analytics',
-      theme: ThemeData.dark().copyWith(
-        scaffoldBackgroundColor: const Color.fromARGB(24, 87, 87, 15)
-      ),
-      home: MultiProvider(
-        providers: [
-           ChangeNotifierProvider(
-            create: (context) => MenuAppController(),
-          ),
-        ],
-        child: const MainScreen(),
+      title: "Admin Panel",
+      theme: ThemeData(
+        scaffoldBackgroundColor: light,
+        textTheme: GoogleFonts.mulishTextTheme(
+          Theme.of(context).textTheme,
+        ).apply(
+          bodyColor: Colors.black,
+        ),
+        pageTransitionsTheme: const PageTransitionsTheme(
+          builders: {
+            TargetPlatform.android: FadeUpwardsPageTransitionsBuilder(),
+            TargetPlatform.iOS: FadeUpwardsPageTransitionsBuilder(),
+          },
+        ),
+        primarySwatch: Colors.indigo,
       ),
     );
   }
 }
 
-class MainScreen extends StatelessWidget {
-  const MainScreen({super.key});
-
+class MyCustomScrollBehavior extends MaterialScrollBehavior {
+  // Override behavior methods and getters like dragDevices
   @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      key: context.read<MenuAppController>().scaffoldKey,
-      drawer: const LeftSideMenu(),
-      body: SafeArea(
-        child: Row(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            // We want this side menu only for large screen
-            if (ResponsiveUtil.isDesktop(context))
-              const Expanded(
-                // default flex = 1
-                // and it takes 1/6 part of the screen
-                child: LeftSideMenu(),
-              ),
-            Expanded(
-              // It takes 5/6 part of the screen
-              flex: 5,
-              child: Container(
-                constraints: const BoxConstraints.expand(), // Expand to fill the available space
-                color: Colors.blue, // Background color of the container
-            child: const Center(
-              child: Text(
-                'Area for dashboard components.',
-                style: TextStyle(color: Colors.white),
-              ),
-              ),
-              ),
-              //MainDashboardArea(),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
+  Set<PointerDeviceKind> get dragDevices => {
+        PointerDeviceKind.touch,
+        PointerDeviceKind.mouse,
+      };
 }
 
