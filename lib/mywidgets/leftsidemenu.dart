@@ -7,44 +7,47 @@ class LeftSideMenu extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Colors.blue,
-            padding: const EdgeInsets.all(20),
+      color: const Color.fromRGBO(196, 223, 223, 1),
+      padding: const EdgeInsets.all(20),
       child: Drawer(
+        backgroundColor: Color.fromARGB(255, 199, 228, 228),
         child: ListView(
-          
           children: [
             DrawerHeader(
               child: Column(
                 children: [
-                  const Center(
-                    child: Text(
-                      "Crayon\nAnalytics",
-                      style: TextStyle(
-                        fontSize: 24.0,
-                        fontWeight: FontWeight.w400,
-                        color: Colors.red,
-                      ),
-                      softWrap: true,
+                  //const Center(
+                  //child:
+
+                  const Text(
+                    "Crayon\nAnalytics",
+                    style: TextStyle(
+                      fontSize: 24.0,
+                      fontWeight: FontWeight.w400,
+                      color: Colors.red,
+                      //textAlign: TextAlign.center,
                     ),
+                    textAlign: TextAlign.center,
+                    //softWrap: true,
                   ),
-                  const SizedBox(
-                      height: 30), // Adding some vertical space between texts
-                  Padding(
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 5), // Adding horizontal padding
-                    child: ClipRRect(
-                      borderRadius:
-                          BorderRadius.circular(10), // Set borderRadius here
-                      child: Container(
-                        height: 50,
-                        color: Colors.green, // Color for the background
-                        child: const Center(
-                          child: Text(
-                            "Dashboard",
-                            style: TextStyle(
-                              fontSize: 18.0,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.black,
+                  // ),
+                  const SizedBox(height: 20),
+                  SingleChildScrollView(
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 5),
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(10),
+                        child: Container(
+                          height: 40,
+                          color: const Color.fromRGBO(248, 246, 244, 1),
+                          child: const Center(
+                            child: Text(
+                              "Dashboard",
+                              style: TextStyle(
+                                fontSize: 18.0,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.black,
+                              ),
                             ),
                           ),
                         ),
@@ -54,53 +57,15 @@ class LeftSideMenu extends StatelessWidget {
                 ],
               ),
             ),
-            // DrawerHeader(
-            //   child: Column(
-            //     children: [
-            //       const Text(
-            //         "Crayon Analytics",
-            //         style: TextStyle(
-            //           fontSize: 24.0,
-            //           fontWeight: FontWeight.w400,
-            //           color: Colors.red,
-            //         ),
-            //         softWrap: true,
-            //       ),
-            //       const SizedBox(height: 20),
-            //       Container(
-            //         width:
-            //             60, // Adjust the width and height as needed to create a square
-            //         height: 20,
-
-            //         color: Colors.white, // Color for the square background
-            //         alignment: Alignment.center,
-
-            //         child: const Text(
-            //           "Dashboard",
-            //           style: TextStyle(
-            //             fontSize: 18.0,
-            //             fontWeight: FontWeight.bold,
-            //             color: Colors.black12,
-            //           ),
-            //         ),
-            //       ),
-            //     ],
-            //   ),
-            // ),
-            // DrawerListTile(
-            //   title: "Management",
-            //   svgSrc: "",
-            //   press: () {},
-            //   //color: Colors.red;
-            // ),
             const Padding(
-              padding: EdgeInsets.only(left:20.0),
+              padding: EdgeInsets.only(left: 28),
               child: Text(
                 "Management",
                 style: TextStyle(
                   color: Colors.red,
                   fontWeight: FontWeight.w600,
-                  fontSize: 18.0              ),
+                  fontSize: 16.0,
+                ),
               ),
             ),
             DrawerListTile(
@@ -124,15 +89,21 @@ class LeftSideMenu extends StatelessWidget {
               press: () {},
             ),
             const Divider(
-              height: 2,
+              height: 4,
               thickness: 2,
-              indent: 50,
+              indent: 36,
               color: Colors.red,
             ),
-            DrawerListTile(
-              title: "Resources",
-              svgSrc: "",
-              press: () {},
+            const Padding(
+              padding: EdgeInsets.fromLTRB(28, 10, 0, 10),
+              child: Text(
+                "Resources",
+                style: TextStyle(
+                  color: Colors.red,
+                  fontWeight: FontWeight.w600,
+                  fontSize: 16.0,
+                ),
+              ),
             ),
             DrawerListTile(
               title: "Asset Allocation",
@@ -150,15 +121,22 @@ class LeftSideMenu extends StatelessWidget {
               press: () {},
             ),
             const Divider(
-              height: 2,
+              
+              height: 4,
               thickness: 2,
-              indent: 50,
+              indent: 36,
               color: Colors.red,
             ),
-            DrawerListTile(
-              title: "Connections",
-              svgSrc: "",
-              press: () {},
+            const Padding(
+              padding: EdgeInsets.fromLTRB(28, 10, 0, 10),//padding: EdgeInsets.only(left: 36),
+              child: Text(
+                "Connections",
+                style: TextStyle(
+                  color: Colors.red,
+                  fontWeight: FontWeight.w600,
+                  fontSize: 16.0,
+                ),
+              ),
             ),
             DrawerListTile(
               title: "Customers",
@@ -201,7 +179,7 @@ class DrawerListTile extends StatelessWidget {
       ),
       title: Text(
         title,
-        style: const TextStyle(color: Colors.black),
+        style: const TextStyle(color: Colors.black, fontSize: 14),
       ),
     );
   }
