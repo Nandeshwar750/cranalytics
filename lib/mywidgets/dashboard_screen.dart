@@ -6,41 +6,58 @@ import 'package:cranalytics/utils/responsiveutil.dart';
 import 'package:flutter/material.dart';
 
 class DashboardScreen extends StatelessWidget {
+  const DashboardScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
-    return const SafeArea(
+    //bool isMobile = ResponsiveUtil.isMobile(context);
+
+    return SafeArea(
       child: SingleChildScrollView(
         primary: false,
-        padding: EdgeInsets.all(5),
+        padding: const EdgeInsets.all(5),
         child: Column(
           children: [
-           // Header(),
-            SizedBox(height: 5),
-            Row(
+            //Header(),
+            const SizedBox(height: 5),
+            const Row(
               crossAxisAlignment: CrossAxisAlignment.start,
-              // children: [
-              //   Expanded(
-              //     flex: 5,
-              //     child: Column(
-              //       children: [
-              //         const SalesDash(),
-              //         const SizedBox(height: 5),
-              //         const QuantityDash(),
-              //         if (ResponsiveUtil.isMobile(context))
-              //           const SizedBox(height: 5),
-              //         if (ResponsiveUtil.isMobile(context)) const ProfitsDash(),
-              //       ],
-              //     ),
-              //   ),
-              //   if (!ResponsiveUtil.isMobile(context))
-              //     const SizedBox(width: 5),
-              //   // On Mobile means if the screen is less than 850 we don't want to show it
-              //   if (!ResponsiveUtil.isMobile(context))
-              //     const Expanded(
-              //       flex: 2,
-              //       child: ProfitsDash(),
-              //     ),
-              // ],
+              children: [
+                Expanded(
+                  flex: 1,
+                  child: Column(
+                    children: [
+                      ProfitsDash(),
+                    ],
+                  ),
+                ),
+                Expanded(
+                  flex: 1,
+                  child: Column(
+                    children: [
+                      ProfitsDash(),
+                    ],
+                  ),
+                ),
+                Expanded(
+                  flex: 1,
+                  child: Column(
+                    children: [
+                      ProfitsDash(),
+                    ],
+                  ),
+                ),
+                Column(children: [
+                  Expanded(
+                    flex: 1,
+                    child: Column(
+                      children: [
+                        ProfitsDash(),
+                      ],
+                    ),
+                  ),
+                ]),
+              ],
             )
           ],
         ),
