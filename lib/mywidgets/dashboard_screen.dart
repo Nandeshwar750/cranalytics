@@ -15,50 +15,15 @@ class DashboardScreen extends StatelessWidget {
     return SafeArea(
       child: SingleChildScrollView(
         primary: false,
-        padding: const EdgeInsets.all(5),
+        padding: EdgeInsets.all(5),
         child: Column(
           children: [
-            //Header(),
+            Header(),
             const SizedBox(height: 5),
             const Row(
               crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Expanded(
-                  flex: 1,
-                  child: Column(
-                    children: [
-                      ProfitsDash(),
-                    ],
-                  ),
-                ),
-                Expanded(
-                  flex: 1,
-                  child: Column(
-                    children: [
-                      ProfitsDash(),
-                    ],
-                  ),
-                ),
-                Expanded(
-                  flex: 1,
-                  child: Column(
-                    children: [
-                      ProfitsDash(),
-                    ],
-                  ),
-                ),
-                Column(children: [
-                  Expanded(
-                    flex: 1,
-                    child: Column(
-                      children: [
-                        ProfitsDash(),
-                      ],
-                    ),
-                  ),
-                ]),
-              ],
-            )
+              children: [],
+            ),
           ],
         ),
       ),
