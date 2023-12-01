@@ -20,9 +20,72 @@ class DashboardScreen extends StatelessWidget {
           children: [
             Header(),
             const SizedBox(height: 5),
-            const Row(
+            Row(
               crossAxisAlignment: CrossAxisAlignment.start,
-              children: [],
+              children: [
+                Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    //First Row
+                    Row(
+                      children: [
+                        Flexible(
+                          child: Container(
+                            height: 100,
+                            color: Colors.red,
+                          ),
+                        ),
+                        Flexible(
+                          child: Container(
+                            height: 100,
+                            color: Colors.green,
+                          ),
+                        ),
+                        Flexible(
+                          child: Container(
+                            height: 100,
+                            color: Colors.orange,
+                          ),
+                        ),
+                        Flexible(
+                          child: Container(
+                            height: 500,
+                            color: Colors.blue,
+                          ),
+                        )
+                      ],
+                    ),
+                    //Second Row
+                    Row(
+                      children: [
+                        Flexible(
+                          child: Container(
+                            height: 100,
+                            color: Colors.red,
+                          ),
+                        ),
+                        Flexible(
+                          child: Container(
+                            height: 100,
+                            color: Colors.green,
+                          ),
+                        ),
+                      ],
+                    ),
+                    //third row
+                    Row(
+                      children: [
+                        Flexible(
+                          child: Container(
+                            height: 100,
+                            color: Colors.red,
+                          ),
+                        ),
+                      ],
+                    )
+                  ],
+                )
+              ],
             ),
           ],
         ),
@@ -30,37 +93,3 @@ class DashboardScreen extends StatelessWidget {
     );
   }
 }
-// class HomeDashboard extends StatelessWidget {
-//    HomeDashboard({super.key});
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return SafeArea(
-//       child: SingleChildScrollView(
-//         primary: false,
-//         padding: const EdgeInsets.all(5),
-//         child: Column(
-//           children: [
-//             // The space above the dashboard area
-//             Header(),
-//             const SizedBox(height: 10),
-//             const Row(
-//               crossAxisAlignment: CrossAxisAlignment.start,
-//               children: [
-//                 Expanded(
-//                   flex: 5,
-//                   child: Column(
-//                     children: [
-//                      Text("data using flex 5"),
-//                      Text("data using flex 5"),
-//                     ],
-//                   ),
-//                 ),
-//               ],
-//             )
-//           ],
-//         ),
-//       ),
-//     );
-//   }
-// }
