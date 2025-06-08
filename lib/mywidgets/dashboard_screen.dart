@@ -1,8 +1,4 @@
 import 'package:cranalytics/mywidgets/dash_profits.dart';
-import 'package:cranalytics/mywidgets/dash_quantity.dart';
-import 'package:cranalytics/mywidgets/dash_sales.dart';
-import 'package:cranalytics/mywidgets/header.dart';
-import 'package:cranalytics/utils/responsiveutil.dart';
 import 'package:flutter/material.dart';
 
 class DashboardScreen extends StatelessWidget {
@@ -12,15 +8,15 @@ class DashboardScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     //bool isMobile = ResponsiveUtil.isMobile(context);
 
-    return SafeArea(
+    return const SafeArea(
       child: SingleChildScrollView(
         primary: false,
-        padding: const EdgeInsets.all(5),
+        padding: EdgeInsets.all(5),
         child: Column(
           children: [
             //Header(),
-            const SizedBox(height: 5),
-            const Row(
+            SizedBox(height: 5),
+            Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Expanded(

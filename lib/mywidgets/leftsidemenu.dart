@@ -10,7 +10,7 @@ class LeftSideMenu extends StatelessWidget {
       color: const Color.fromRGBO(196, 223, 223, 1),
       padding: const EdgeInsets.all(20),
       child: Drawer(
-        backgroundColor: Color.fromARGB(255, 199, 228, 228),
+        backgroundColor: const Color.fromARGB(255, 199, 228, 228),
         child: ListView(
           children: [
             DrawerHeader(
@@ -157,12 +157,12 @@ class LeftSideMenu extends StatelessWidget {
 
 class DrawerListTile extends StatelessWidget {
   const DrawerListTile({
-    Key? key,
+    super.key,
     // For selecting those three line once press "Command+D"
     required this.title,
     required this.svgSrc,
     required this.press,
-  }) : super(key: key);
+  });
 
   final String title, svgSrc;
   final VoidCallback press;

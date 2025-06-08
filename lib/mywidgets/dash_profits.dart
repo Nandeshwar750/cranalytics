@@ -11,6 +11,7 @@ class ProfitsDash extends StatefulWidget {
 class _ProfitsDashState extends State<ProfitsDash> {
   late List<NewVisitors> _chartData;
 
+  @override
   void initState() {
     _chartData = getChartData();
   }

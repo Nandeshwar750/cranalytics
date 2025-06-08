@@ -52,7 +52,7 @@ class MainScreen extends StatelessWidget {
                 // left side menu for desktop size screens
                 child: LeftSideMenu(),
               ),
-            Expanded(
+            const Expanded(
               // It takes 5/6 part of the screen
               flex: 5,
               child: DashboardScreen(),
