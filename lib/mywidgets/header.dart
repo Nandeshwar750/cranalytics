@@ -3,32 +3,45 @@ import 'package:cranalytics/controllers/menuappcontroller.dart';
 import 'package:cranalytics/utils/responsiveutil.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
-// ignore: must_be_immutable
 class Header extends StatelessWidget {
-  String userName = "Dev";
-
-  Header({super.key});
+  const Header({super.key});
+  static const userName = "Nandesh";
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      children: [
-        if (!ResponsiveUtil.isDesktop(context))
-          IconButton(
-            icon: const Icon(Icons.menu),
-            onPressed: context.read<MenuAppController>().controlMenu,
-          ),
-        if (!ResponsiveUtil.isMobile(context))
-          Text(
-            "Welcome, $userName",
-            style: Theme.of(context).textTheme.titleLarge,
-          ),
-        if (!ResponsiveUtil.isMobile(context))
-          Spacer(flex: ResponsiveUtil.isDesktop(context) ? 2 : 1),
-        const Expanded(child: SearchField()),
-        const ProfileCard()
-      ],
+    return Container(
+      padding: EdgeInsets.zero,
+      color: Colors.amber,
+      // decoration: const BoxDecoration(
+      //   //borderRadius: const BorderRadius.all(Radius.circular(10)),
+      //   //border: Border.all(color: const Color.fromARGB(26, 61, 56, 56)),
+      // ),
+      child: Row(
+        
+        children: [
+          if (!ResponsiveUtil.isDesktop(context))
+            IconButton(
+              icon: Icon(Icons.menu),
+              onPressed: context.read<MenuAppController>().controlMenu,
+            ),
+          if (!ResponsiveUtil.isMobile(context))
+            Padding(
+              padding: const EdgeInsets.only(left: 8.0),
+              child: const Text("Welcome $userName",
+                  style: TextStyle(fontSize: 32, fontWeight: FontWeight.w700)),
+            ),
+          if (!ResponsiveUtil.isMobile(context))
+            Spacer(flex: 1),//ResponsiveUtil.isDesktop(context) ? 2 : 1),
+          Expanded(
+              child: IconButton(
+            icon: Icon(Icons.notifications),
+            onPressed: () {},
+          )),
+          ProfileCard(),
+        ],
+      ),
     );
   }
 }
@@ -46,55 +59,28 @@ class ProfileCard extends StatelessWidget {
         horizontal: defaultPadding,
         vertical: defaultPadding / 2,
       ),
-      decoration: BoxDecoration(
-        color: secondaryColor,
-        borderRadius: const BorderRadius.all(Radius.circular(10)),
-        border: Border.all(color: Colors.white10),
-      ),
+      // decoration: BoxDecoration(
+      //   color: secondaryColor,
+      //   borderRadius: const BorderRadius.all(Radius.circular(10)),
+      //   border: Border.all(color: Colors.white10),
+      // ),
       child: Row(
         children: [
-          Stack(
-            fit: StackFit.expand,
-            children: <Widget>[
-              // Background Image
-              Image.network(
-                'https://via.placeholder.com/500x500', // Replace with your background image URL
-                fit: BoxFit.cover,
-              ),
-              // Foreground Image or Widget
-              Center(
-                child: Image.network(
-                  'https://via.placeholder.com/200x200', // Replace with your foreground image URL
-                  width: 150,
-                  height: 150,
-                ),
-              ),
-              // You can add other widgets on top as needed
-              // For example, Text, Positioned, Container, etc.
-              const Positioned(
-                bottom: 20,
-                left: 20,
-                child: Text(
-                  'Foreground Text',
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-              ),
-            ],
+          CircleAvatar(
+            radius: 32.0, // Adjust the radius as needed
+            backgroundColor: Colors.blue, // Specify the background color
+            child: Icon(
+              Icons.person,
+              size: 40.0, // Adjust the icon size as needed
+              color: Colors.white, // Specify the icon color
+            ),
           ),
-          // Image.asset(
-          //   "assets/images/profile_pic.png",
-          //   height: 38,
-          // ),
           if (!ResponsiveUtil.isMobile(context))
             Padding(
-              padding: EdgeInsets.symmetric(horizontal: defaultPadding / 2),
-              child: const Text("Admin"),
+              padding: const EdgeInsets.symmetric(horizontal: 5 / 2),
+              child: Text(Header.userName),
             ),
-          const Icon(Icons.keyboard_arrow_down),
+          Icon(Icons.keyboard_arrow_down),
         ],
       ),
     );
@@ -113,9 +99,9 @@ class SearchField extends StatelessWidget {
         hintText: "Search",
         fillColor: secondaryColor,
         filled: true,
-        border: const OutlineInputBorder(
+        border: OutlineInputBorder(
           borderSide: BorderSide.none,
-          borderRadius: BorderRadius.all(Radius.circular(10)),
+          borderRadius: const BorderRadius.all(Radius.circular(10)),
         ),
         suffixIcon: InkWell(
           onTap: () {},
@@ -126,7 +112,7 @@ class SearchField extends StatelessWidget {
               color: primaryColor,
               borderRadius: const BorderRadius.all(Radius.circular(10)),
             ),
-            child: Image.asset("assets/icons/Search.svg"),
+            child: SvgPicture.asset("assets/icons/Search.svg"),
           ),
         ),
       ),

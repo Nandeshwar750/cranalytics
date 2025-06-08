@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Crayon Analytics',
       theme: ThemeData.light().copyWith(
-        scaffoldBackgroundColor: Colors.blue,// const Color.fromARGB(24, 87, 87, 15)
+        //scaffoldBackgroundColor: Colors.blue,// const Color.fromARGB(24, 87, 87, 15)
         //textTheme: GoogleFonts.poppinsTextTheme(Theme.of(context).textTheme).apply(bodyColor: Colors.green),
       ),
       home: MultiProvider(
