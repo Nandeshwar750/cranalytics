@@ -14,15 +14,9 @@ class DashboardScreen extends StatelessWidget {
         padding: EdgeInsets.all(5),
         child: Column(
           children: [
-<<<<<<< HEAD
             //Header(),
             SizedBox(height: 5),
             Row(
-=======
-            Header(),
-            const SizedBox(height: 5),
-            const Row(
->>>>>>> 6a2e68e2fddf21fe9fe4501bead5207754221b51
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [],
             ),

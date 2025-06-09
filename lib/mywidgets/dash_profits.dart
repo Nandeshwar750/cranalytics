@@ -23,11 +23,11 @@ class _ProfitsDashState extends State<ProfitsDash> {
         color: Colors.teal[100],
         //linechart
         child: SfCartesianChart(
-          primaryXAxis: CategoryAxis(),
-          title: ChartTitle(text: "Website Visitors"),
+          primaryXAxis: const CategoryAxis(),
+          title: const ChartTitle(text: "Website Visitors"),
           //legend: Legend(isVisible: true),
           tooltipBehavior: TooltipBehavior(enable: true),
-          series: <ChartSeries<NewVisitors, String>>[
+          series: <CartesianSeries<NewVisitors, String>>[
             LineSeries<NewVisitors, String>(
                 dataSource: _chartData,
                 xValueMapper: (NewVisitors data1, _) => data1._month,
